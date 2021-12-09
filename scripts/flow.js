@@ -1,4 +1,4 @@
-let set = { index: 0 };
+let set = { index: 0, readMore: ""};
 
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -8,11 +8,12 @@ async function onLoad() {
     let path = parser.getParams();
     await $.get(path, function (json) { 
           set.data = json.data;
+          set.readMore = json.readmore;
     });
 
-    view.createCard(-1, "", "left","");
-    view.createCard(0, set.data[0].text, "center",set.data[0].title);
-    view.createCard(1, set.data[1].text, "right",set.data[1].title);
+    view.createCard(-1, "", "left","", set.readMore);
+    view.createCard(0, set.data[0].text, "center",set.data[0].title, set.readMore);
+    view.createCard(1, set.data[1].text, "right",set.data[1].title, set.readMore);
     
     loader.toggle();
 }

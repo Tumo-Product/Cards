@@ -1,5 +1,5 @@
 const view = {
-    createCard: (i, text, type, title) => {
+    createCard: (i, text, type, title, readMore) => {
         if (set.data[0].text.length > 650) {
             $(`#0 .text`).html(set.data[0].text.slice(0, 530).concat('...'));
         }
@@ -12,7 +12,7 @@ const view = {
             <div id="${i}" class="card ${type}">
                 <p class="title">${title}</p>
                 <p class="text">${text}</p>
-                <label onClick="readMore(${i})" class="readMore" style="display: none">Lire plus<label>
+                <label onClick="readMore(${i})" class="readMore" style="display: none">${readMore}<label>
             </div>
         `;
 
