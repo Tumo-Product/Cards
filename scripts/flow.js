@@ -48,7 +48,7 @@ function readMore() {
         if ($(`#${set.index} .title`).css("height") > "50px") {
             $(`#${set.index} .text`).css("top", "130px")
         }
-        $(`#${set.index} .text`).css("max-height","275px");
+        $(`#${set.index} .text`).css("max-height","300px");
         $(`#${set.index} .text`).css("height","auto");
         $(`#${set.index} .text`).css("overflow","auto");
         $(`#${set.index} .text`).html(set.data[set.index].text);
