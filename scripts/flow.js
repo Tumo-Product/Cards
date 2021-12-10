@@ -48,8 +48,8 @@ function readMore() {
         if ($(`#${set.index} .title`).css("height") > "50px") {
             $(`#${set.index} .text`).css("top", "130px")
         }
-        else if ($(`#${set.index} .title`).css("height") < "50px" && set.data[set.index].text.length > 650) {
-            $(`#${set.index} .text`).css("top", "120px")
+        else if ($(`#${set.index} .title`).css("height") < "50px" && set.data[set.index].text.length < 650) {
+            $(`#${set.index} .text`).css("top", "auto")
         }
         $(`#${set.index} .text`).css("max-height","300px");
         $(`#${set.index} .text`).css("height","auto");
