@@ -4,7 +4,7 @@ const view = {
             $(`#0 .text`).html(set.data[0].text.slice(0, 530).concat('...'));
         }
 
-        if (set.data[0].title.length > 40) {
+        if ($(`#${0} .title`).css("height") > "50px" && set.data[0].text.length > 550) {
             $(`#${0} .text`).css("top", "130px")
         }
 
@@ -26,13 +26,15 @@ const view = {
     editCard: (i, text, title) => {
         if(text.length < 650 && title.length < 1) {
             $(`#${i} .text`).html(text);
+            $(`#${i} .text`).css("top", "auto")
             $(`#${i} .readMore`).css("display", "none");
         }
         else if (text.length > 650 && title.length < 1) {
             $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
             $(`#${i} .readMore`).css("display", "flex");
         }
-        else if (text.length < 650 && title.length > 1) {
+        else if (text.length < 650 && title.length > 1 && text.length > 450) {
+            $(`#${i} .text`).css("top", "130px");
             $(`#${i} .text`).html(text);
             $(`#${i} .readMore`).css("display", "none");
         }
@@ -44,8 +46,13 @@ const view = {
             $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
             $(`#${i} .readMore`).css("display", "flex");
         }
-       if (set.data[i].title.length > 40 && set.data[i].text.length > 550) {
-            $(`#${i} .text`).css("top", "130px")
+        else if ($(`#${i} .title`).css("height") > "50px" && set.data[i].text.length > 550) {
+            $(`#${i} .text`).css("top", "130px");
+        }
+        else if ($(`#${i} .title`).css("height") < "50px" && text.length < 300) {
+            $(`#${i} .text`).html(text);
+            $(`#${i} .text`).css("top", "auto")
+            $(`#${i} .readMore`).css("display", "none");
         }
         $(`#${i} .title`).html(title);
     },
