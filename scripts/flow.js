@@ -45,7 +45,7 @@ function readMore() {
         $(`#${set.index} .readMore`).css("display","none");
     }
     else {
-        if (set.data[set.index].title.length > 40) {
+        if ($(`#${set.index} .title`).css("height") > "50px") {
             $(`#${set.index} .text`).css("top", "130px")
         }
         $(`#${set.index} .text`).css("max-height","275px");
