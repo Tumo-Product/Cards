@@ -24,7 +24,7 @@ const view = {
         }
     },
     editCard: (i, text, title) => {
-        if(text.length < 650 && title.length < 1) {
+        if((text.length < 650 && title.length < 1) || ($(`#${i} .title`).css("height") < "50px" && text.length < 300)) {
             $(`#${i} .text`).html(text);
             $(`#${i} .text`).css("top", "auto")
             $(`#${i} .readMore`).css("display", "none");
@@ -48,11 +48,6 @@ const view = {
         }
         else if ($(`#${i} .title`).css("height") > "50px" && set.data[i].text.length > 550) {
             $(`#${i} .text`).css("top", "130px");
-        }
-        else if ($(`#${i} .title`).css("height") < "50px" && text.length < 300) {
-            $(`#${i} .text`).html(text);
-            $(`#${i} .text`).css("top", "auto")
-            $(`#${i} .readMore`).css("display", "none");
         }
         $(`#${i} .title`).html(title);
     },
