@@ -33,8 +33,7 @@ const view = {
             $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
             $(`#${i} .readMore`).css("display", "flex");
         }
-        else if (text.length < 650 && title.length > 1 && text.length > 450) {
-            $(`#${i} .text`).css("top", "130px");
+        else if (text.length < 650 && title.length > 1) {
             $(`#${i} .text`).html(text);
             $(`#${i} .readMore`).css("display", "none");
         }
