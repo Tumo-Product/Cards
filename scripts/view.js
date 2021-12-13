@@ -39,31 +39,42 @@ const view = {
             $(`#next .scrolImg`).removeClass("disable");
             $(`#back .scrolImg`).removeClass("disable");
         }
-        if((text.length < 650 && title.length < 1) || ($(`#${i} .title`).css("height") < "50px" && text.length < 300)) {
+        $(`#${i} .title`).html(title);
+        if (title.length < 1 && text.length < 650) {
             $(`#${i} .text`).html(text);
             $(`#${i} .text`).css("top", "auto")
             $(`#${i} .readMore`).css("display", "none");
         }
-        else if (text.length > 650 && title.length < 1) {
+        else if (title.length < 1 && text.length > 650) {
+            $(`#${i} .text`).css("top", "auto")
             $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
             $(`#${i} .readMore`).css("display", "flex");
         }
-        else if (text.length < 650 && title.length > 1) {
+        else if ($(`#${i} .title`).css("height") == "49px" && text.length > 650) {
+            $(`#${i} .text`).css("top", "auto");
+            $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
+            $(`#${i} .readMore`).css("display", "flex");
+        }
+        else if (text.length > 650 && $(`#${i} .title`).css("height") == "98px") {
+            $(`#${i} .text`).css("top", "130px");
+            $(`#${i} .text`).html(text.slice(0, 550).concat('...'));
+            $(`#${i} .readMore`).css("display", "flex");
+        }
+        else if($(`#${i} .title`).css("height") == "49px" && text.length < 650 && text.length > 400) {
+            $(`#${i} .text`).css("top", "auto");
             $(`#${i} .text`).html(text);
             $(`#${i} .readMore`).css("display", "none");
         }
-        else if (text.length > 550 && title.length > 1) {
-            $(`#${i} .text`).html(text.slice(0, 530).concat('...'));
-            $(`#${i} .readMore`).css("display", "flex");
-        }
-        else if ($(`#${i} .text`).css("height") > "401px") {
-            $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
-            $(`#${i} .readMore`).css("display", "flex");
-        }
-        else if ($(`#${i} .title`).css("height") > "50px" && set.data[i].text.length > 550) {
+        else if ($(`#${i} .title`).css("height") == "98px" && text.length < 650 && text.length > 400) {
             $(`#${i} .text`).css("top", "130px");
+            $(`#${i} .text`).html(text);
+            $(`#${i} .readMore`).css("display", "none");
         }
-        $(`#${i} .title`).html(title);
+        else if($(`#${i} .title`).css("height") == "49px" && text.length < 400 || $(`#${i} .title`).css("height") == "98px" && text.length < 400) {
+            $(`#${i} .text`).css("top", "auto");
+            $(`#${i} .text`).html(text);
+            $(`#${i} .readMore`).css("display", "none");
+        }
     },
     scrollCards: async (direction) => {
         if (direction > 0) {
