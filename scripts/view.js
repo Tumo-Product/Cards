@@ -1,6 +1,9 @@
 const view = {
     createCard: (i, text, type, title, readMore) => {
-        if (set.data[0].text.length > 650) {
+        if ($(`#0 .text`).css("height") > "300px") {
+            $(`#0 .text`).html(set.data[0].text.slice(0, 580).concat('...'));
+        }
+        else if (set.data[0].text.length > 650) {
             $(`#0 .text`).html(set.data[0].text.slice(0, 650).concat('...'));
         }
 
@@ -40,8 +43,9 @@ const view = {
             $(`#back .scrolImg`).removeClass("disable");
         }
 
-
+        
         $(`#${i} .title`).html(title);
+
         if (title.length < 1 && text.length < 650) {
             $(`#${i} .text`).html(text);
             $(`#${i} .text`).css("top", "auto")
@@ -54,7 +58,7 @@ const view = {
         }
         else if ($(`#${i} .title`).css("height") == "49px" && text.length > 650) {
             $(`#${i} .text`).css("top", "auto");
-            $(`#${i} .text`).html(text.slice(0, 650).concat('...'));
+            $(`#${i} .text`).html(text.slice(0, 580).concat('...'));
             $(`#${i} .readMore`).css("display", "flex");
         }
         else if (text.length > 650 && $(`#${i} .title`).css("height") == "98px") {
