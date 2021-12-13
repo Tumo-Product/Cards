@@ -1,10 +1,10 @@
 const view = {
     createCard: (i, text, type, title, readMore) => {
         if (set.data[0].text.length > 650) {
-            $(`#0 .text`).html(set.data[0].text.slice(0, 530).concat('...'));
+            $(`#0 .text`).html(set.data[0].text.slice(0, 650).concat('...'));
         }
 
-        if ($(`#${0} .title`).css("height") > "50px" && set.data[0].text.length > 550) {
+        if ($(`#${0} .title`).css("height") == "98px" && set.data[0].text.length > 550) {
             $(`#${0} .text`).css("top", "130px")
         }
 
