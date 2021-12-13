@@ -38,24 +38,24 @@ const scrollCards = (direction) => {
 
 function readMore() {
     if(set.data[set.index].text.length > 650 && set.data[set.index].title.length < 1) {
-        $(`#${set.index} .text`).css("top","auto");
-        $(`#${set.index} .text`).css("height","auto");
-        $(`#${set.index} .text`).css("overflow","auto");
+        $(`#${set.index} .text`).css("top", "auto");
+        $(`#${set.index} .text`).css("height", "auto");
+        $(`#${set.index} .text`).css("overflow", "auto");
         $(`#${set.index} .text`).html(set.data[set.index].text);
-        $(`#${set.index} .readMore`).css("display","none");
+        $(`#${set.index} .readMore`).css("display", "none");
     }
     else {
-        if ($(`#${set.index} .title`).css("height") > "50px") {
+        if ($(`#${set.index} .title`).css("height") == "98px") {
             $(`#${set.index} .text`).css("top", "130px")
         }
-        else if ($(`#${set.index} .title`).css("height") < "50px" && set.data[set.index].text.length < 650) {
+        else if ($(`#${set.index} .title`).css("height") == "49px" && set.data[set.index].text.length < 650) {
             $(`#${set.index} .text`).css("top", "auto")
         }
-        $(`#${set.index} .text`).css("max-height","300px");
-        $(`#${set.index} .text`).css("height","auto");
-        $(`#${set.index} .text`).css("overflow","auto");
+        $(`#${set.index} .text`).css("max-height", "300px");
+        $(`#${set.index} .text`).css("height", "auto");
+        $(`#${set.index} .text`).css("overflow", "auto");
         $(`#${set.index} .text`).html(set.data[set.index].text);
-        $(`#${set.index} .readMore`).css("display","none");
+        $(`#${set.index} .readMore`).css("display", "none");
     }
 }
 
