@@ -39,6 +39,8 @@ const view = {
             $(`#next .scrolImg`).removeClass("disable");
             $(`#back .scrolImg`).removeClass("disable");
         }
+
+
         $(`#${i} .title`).html(title);
         if (title.length < 1 && text.length < 650) {
             $(`#${i} .text`).html(text);
