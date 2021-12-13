@@ -7,7 +7,10 @@ const view = {
         if ($(`#${0} .title`).css("height") == "98px" && set.data[0].text.length > 550) {
             $(`#${0} .text`).css("top", "130px")
         }
-
+        if(set.index == 0) {
+            $(`#back .scrolImg`).addClass("disable");
+        }
+        
         let card = `
             <div id="${i}" class="card ${type}">
                 <p class="title">${title}</p>
@@ -24,6 +27,18 @@ const view = {
         }
     },
     editCard: (i, text, title) => {
+        if(set.index == 0) {
+            $(`#back .scrolImg`).addClass("disable");
+            $(`#next .scrolImg`).removeClass("disable");
+        }
+        else if (set.index == set.data.length - 1) {
+            $(`#next .scrolImg`).addClass("disable");
+            $(`#back .scrolImg`).removeClass("disable");
+        }
+        else if (set.index !=0 || set.index != set.data.length - 1) {
+            $(`#next .scrolImg`).removeClass("disable");
+            $(`#back .scrolImg`).removeClass("disable");
+        }
         if((text.length < 650 && title.length < 1) || ($(`#${i} .title`).css("height") < "50px" && text.length < 300)) {
             $(`#${i} .text`).html(text);
             $(`#${i} .text`).css("top", "auto")
