@@ -1,5 +1,5 @@
 .toLeft {
-    animation: 2.5s left;
+    animation: 3s left;
 }
 
 @keyframes left {
@@ -15,7 +15,7 @@
 }
 
 .toRight {
-    animation: 2.5s right;
+    animation: 3s right;
 }
 
 @keyframes right {
