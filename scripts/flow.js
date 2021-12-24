@@ -9,6 +9,9 @@ async function onLoad() {
     await $.get(path, function (json) { 
           set.data = json.data;
           set.readMore = json.readmore;
+          $(document).ready(function() {
+            $("#style").attr("href", `styles/${json.style}.css`);
+        });
     });
 
     view.createCard(-1, "", "left","", set.readMore);
