@@ -85,7 +85,6 @@ const view = {
     scrollCards: async (direction) => {
         if (direction > 0) {
             let count = -1;
-            view.editCard(set.index, set.data[set.index].text, set.data[set.index].title);
             for(let i = set.index - 1; i < set.index + direction; i++)
             {
                 $(`#${i}`).css("margin-left", 2400 * count);
@@ -109,7 +108,7 @@ const view = {
                 count--;
             }
         }
-
+        view.editCard(set.index, set.data[set.index].text, set.data[set.index].title);
         $(".card").removeClass("left center right");
         $(`#${set.index}`).addClass("center");
         
