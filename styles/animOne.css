@@ -1,5 +1,5 @@
 .toLeft {
-    animation: 3s left;
+    animation: 40s left;
 }
 
 @keyframes left {
@@ -8,14 +8,14 @@
         top: -10px;
     }
 
-    5% {
+    1% {
         transform: rotate(-40deg);
-        top: -550px;
+        top: -500px;
     }
 }
 
 .toRight {
-    animation: 3s right;
+    animation: 40s right;
 }
 
 @keyframes right {
@@ -24,9 +24,9 @@
         top: -10px;
     }
 
-    5% {
+    1% {
         transform: rotate(40deg);
-        top: -550px;
+        top: -500px;
     }
 }
 
