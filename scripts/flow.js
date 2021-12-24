@@ -1,25 +1,41 @@
-let set = { index: 0, readMore: ""};
+let set = { index: 0, readMore: "" };
 
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function onLoad() {
-    let path = parser.getParams();
-    await $.get(path, function (json) { 
-          set.data = json.data;
-          set.readMore = json.readmore;
-          $(document).ready(function() {
-              $("#style").attr("href", `styles/${json.style}.css`);
-        });
+    view.createCard(-1, "", "left", "", set.readMore);
+    view.createCard(0, set.data[0].text, "center",  set.data[0].title, set.readMore);
+    view.createCard(1, set.data[1].text, "right",   set.data[1].title, set.readMore);
+
+    $("body").mousedown(function (e) {
+        mousedown(e)
     });
 
-    view.createCard(-1, "", "left","", set.readMore);
-    view.createCard(0, set.data[0].text, "center",set.data[0].title, set.readMore);
-    view.createCard(1, set.data[1].text, "right",set.data[1].title, set.readMore);
-    
+    $("body").mousemove(function (e) {
+        mousemove(e, this);
+    })
+
+    $("body").mouseup(function (e) {
+        mouseup(e);
+    });
+
     loader.toggle();
 }
+
+$(async () => {
+    let path = parser.getParams();
+    await $.get(path, async function (json) {
+        set.data = json.data;
+        set.readMore = json.readmore;
+        let style =  document.getElementById("style");
+        style.onload = onLoad;
+        style.href = `styles/${json.style}.css`;
+        // let styleAnim =  document.getElementById("styleAnim");
+        // styleAnim.href = `styles/${json.anim}.css`;
+    });
+});
 
 const scrollCards = (direction) => {
     let newIndex = set.index + direction;
@@ -29,7 +45,7 @@ const scrollCards = (direction) => {
     }
     else {
         $(`.scrollBtn`).css("pointer-events", "none").prop("disabled", true);
-        
+
         set.index += direction;
         view.scrollCards(direction);
 
@@ -40,7 +56,7 @@ const scrollCards = (direction) => {
 }
 
 function readMore() {
-    if(set.data[set.index].text.length > 650 && set.data[set.index].title.length < 1) {
+    if (set.data[set.index].text.length > 650 && set.data[set.index].title.length < 1) {
         $(`#${set.index} .text`).css("top", "auto");
         $(`#${set.index} .text`).css("height", "auto");
         $(`#${set.index} .text`).css("overflow", "auto");
@@ -66,27 +82,25 @@ const reset = (index) => {
     view.reset();
 }
 
-$(onLoad);
-
 let drag = { mouseDownPos: 0, start: 0, end: 0, ended: false };
 let area = { x: 0 };
 let inMotion = false;
 let coolDown = false;
 
-$("body").mousedown(function (e) {
+const mousedown = async (e) => {
     if (!drag.ended && coolDown == false) {
         drag.mouseDownPos = e.pageX;
         drag.start = e.pageX;
         drag.ended = true;
     }
-})
+}
 
-$("body").mousemove(function (e) {
-    if (drag.ended) {        
+const mousemove = (e) => {
+    if (drag.ended) {
         area.x = e.pageX - drag.start;
         $(`.card`).css("transition", `none`);
 
-        $(".card").each(function(i) {
+        $(".card").each(function (i) {
             let margin = parseFloat($(this).css("margin-left"));
             $(this).css("margin-left", margin + area.x);
         });
@@ -98,14 +112,10 @@ $("body").mousemove(function (e) {
     if (e.pageX <= 30 || e.pageX >= window.innerWidth - 30) {
         mouseup(e);
     }
-    if(($(`#-1`).css("margin-left") < "-1800px" || $(`#${set.data.length}`).css("margin-left") < "1800")) {
+    if (($(`#-1`).css("margin-left") < "-1800px" || $(`#${set.data.length}`).css("margin-left") < "1800")) {
         mouseup(e);
     }
-})
-
-$("body").mouseup(function (e) {
-    mouseup(e);
-})
+}
 
 const mouseup = (e) => {
     if (drag.ended) {
@@ -114,14 +124,14 @@ const mouseup = (e) => {
 
         let difference = drag.end - drag.mouseDownPos;
         if (Math.abs(difference) >= 150) {
-            let direction  = -Math.sign(difference);
+            let direction = -Math.sign(difference);
             let newIndex = set.index + direction;
 
             if (newIndex < 0 || newIndex >= set.data.length) {
                 reset();
                 return;
             }
-            
+
             coolDown = true;
             scrollCards(direction);
             setTimeout(() => coolDown = false, 500);

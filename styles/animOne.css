@@ -1,0 +1,29 @@
+.toLeft {
+    animation: 1.3s left;
+}
+
+@keyframes left {
+    0% {
+        transform: rotate(-10deg);
+        top: -100px;
+    }
+    10% {
+        transform: rotate(-15deg);
+        top: -250px;
+    }
+
+    20% {
+        transform: rotate(-20deg);
+        top: -340px;
+    }
+
+    80% {
+        transform: rotate(-30deg);
+        top: -400px;
+    }
+
+    100% {
+        transform: rotate(-40deg);
+        top: -550px;
+    }
+}

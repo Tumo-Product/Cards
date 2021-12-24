@@ -53,5 +53,7 @@
             "title": ""
         }
     ],
-    "readmore": "Read More"
+    "readmore": "Read More",
+    "style": "style",
+    "anim": "animOne"
 }

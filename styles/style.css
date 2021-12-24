@@ -20,7 +20,7 @@ body {
 
 .card {
     top: 33px;
-    transition: 0.5s;
+    transition: 0.7s;
     background-color: #F3F3F3;
     box-shadow: 3px 3px 4px 0 rgba(222,222,230,0.5), -3px -3px 4px 0 #FEFEFE;
     position: absolute;
