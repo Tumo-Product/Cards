@@ -1,5 +1,5 @@
 let set = { index: 0, readMore: "" };
-
+let anim;
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -27,13 +27,16 @@ async function onLoad() {
 $(async () => {
     let path = parser.getParams();
     await $.get(path, async function (json) {
+        anim = json.anim;
         set.data = json.data;
         set.readMore = json.readmore;
         let style =  document.getElementById("style");
         style.onload = onLoad;
         style.href = `styles/${json.style}.css`;
-        // let styleAnim =  document.getElementById("styleAnim");
-        // styleAnim.href = `styles/${json.anim}.css`;
+        if (json.anim != undefined) {
+            let styleAnim =  document.getElementById("styleAnim");
+            styleAnim.href = `styles/${json.anim}.css`;
+        }
     });
 });
 

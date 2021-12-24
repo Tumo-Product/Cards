@@ -85,9 +85,15 @@ const view = {
     scrollCards: async (direction) => {
         if (direction > 0) {
             let count = -1;
+            view.editCard(set.index, set.data[set.index].text, set.data[set.index].title);
             for(let i = set.index - 1; i < set.index + direction; i++)
             {
                 $(`#${i}`).css("margin-left", 2400 * count);
+                if (anim != undefined) {
+                    $(`#${set.index - 1}`).addClass("toLeft")
+                    await timeout(250)
+                    $(`#${set.index - 1}`).removeClass("toLeft");
+                }
                 count++;
             }
         } else {
@@ -95,6 +101,11 @@ const view = {
             for(let i = set.index + 1; i > set.index + direction; i--)
             {
                 $(`#${i}`).css("margin-left", 2400 * count);
+                if (anim != undefined) {
+                    $(`#${set.index + 1}`).addClass("toRight")
+                    await timeout(250)
+                    $(`#${set.index + 1}`).removeClass("toRight");
+                }
                 count--;
             }
         }
@@ -102,7 +113,7 @@ const view = {
         $(".card").removeClass("left center right");
         $(`#${set.index}`).addClass("center");
         
-        view.editCard(set.index, set.data[set.index].text, set.data[set.index].title);
+        
         
         if (direction > 0) {
             $(`#${set.index - 1}`).addClass("left");
@@ -111,7 +122,7 @@ const view = {
             setTimeout(() => {
             $(`#${set.index - 2}`).css("margin-left", "2400px");
             $(`#${set.index - 2}`).attr("id", set.index + 1);
-            },10);
+            },10    );
 
             setTimeout(() => {
                 $(`#${set.index + 1}`).show();
