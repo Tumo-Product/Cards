@@ -10,7 +10,7 @@ async function onLoad() {
           set.data = json.data;
           set.readMore = json.readmore;
           $(document).ready(function() {
-            $("#style").attr("href", `styles/${json.style}.css`);
+              $("#style").attr("href", `styles/${json.style}.css`);
         });
     });
 
