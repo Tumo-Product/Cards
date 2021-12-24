@@ -5,7 +5,7 @@ const timeout = (ms) => {
 }
 
 async function onLoad() {
-    view.createCard(-1, "", "left", "", set.readMore);
+    view.createCard(-1, "",              "left",    "",                set.readMore);
     view.createCard(0, set.data[0].text, "center",  set.data[0].title, set.readMore);
     view.createCard(1, set.data[1].text, "right",   set.data[1].title, set.readMore);
 
@@ -54,7 +54,7 @@ const scrollCards = (direction) => {
 
         setTimeout(() => {
             $(`.scrollBtn`).css("pointer-events", "auto").removeAttr("disabled");
-        }, 500);
+        }, 1000);
     }
 }
 
@@ -109,10 +109,10 @@ const mousemove = (e) => {
         });
 
         drag.start = e.pageX;
-        $(`.card`).css("transition", `0.5s`);
+        $(`.card`).css("transition", `1s`);
     }
 
-    if (e.pageX <= 30 || e.pageX >= window.innerWidth - 30) {
+    if (e.pageX <= 70 || e.pageX >= window.innerWidth - 70) {
         mouseup(e);
     }
     if (($(`#-1`).css("margin-left") < "-1800px" || $(`#${set.data.length}`).css("margin-left") < "1800")) {
@@ -137,7 +137,7 @@ const mouseup = (e) => {
 
             coolDown = true;
             scrollCards(direction);
-            setTimeout(() => coolDown = false, 500);
+            setTimeout(() => coolDown = false, 1000);
         } else {
             reset();
         }
