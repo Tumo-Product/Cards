@@ -54,7 +54,7 @@ const scrollCards = (direction) => {
 
         setTimeout(() => {
             $(`.scrollBtn`).css("pointer-events", "auto").removeAttr("disabled");
-        }, 1000);
+        }, 500);
     }
 }
 
@@ -109,7 +109,7 @@ const mousemove = (e) => {
         });
 
         drag.start = e.pageX;
-        $(`.card`).css("transition", `1s`);
+        $(`.card`).css("transition", `0.5s`);
     }
 
     if (e.pageX <= 70 || e.pageX >= window.innerWidth - 70) {
@@ -137,7 +137,7 @@ const mouseup = (e) => {
 
             coolDown = true;
             scrollCards(direction);
-            setTimeout(() => coolDown = false, 1000);
+            setTimeout(() => coolDown = false, 500);
         } else {
             reset();
         }

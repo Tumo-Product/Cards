@@ -90,7 +90,7 @@ const view = {
                 $(`#${i}`).css("margin-left", 2400 * count);
                 if (anim != undefined) {
                     $(`#${set.index - 1}`).addClass("toLeft")
-                    await timeout(250)
+                    await timeout(250);
                     $(`#${set.index - 1}`).removeClass("toLeft");
                 }
                 count++;
@@ -102,7 +102,7 @@ const view = {
                 $(`#${i}`).css("margin-left", 2400 * count);
                 if (anim != undefined) {
                     $(`#${set.index + 1}`).addClass("toRight")
-                    await timeout(250)
+                    await timeout(250);
                     $(`#${set.index + 1}`).removeClass("toRight");
                 }
                 count--;
@@ -121,7 +121,7 @@ const view = {
             setTimeout(() => {
             $(`#${set.index - 2}`).css("margin-left", "2400px");
             $(`#${set.index - 2}`).attr("id", set.index + 1);
-            },10    );
+            },10);
 
             setTimeout(() => {
                 $(`#${set.index + 1}`).show();
