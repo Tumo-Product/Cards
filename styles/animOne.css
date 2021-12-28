@@ -9,8 +9,8 @@
     }
 
     1% {
-        transform: rotate(-40deg);
-        top: -500px;
+        transform: rotate(-100deg);
+        top: -700px;
     }
 }
 
@@ -25,8 +25,8 @@
     }
 
     1% {
-        transform: rotate(40deg);
-        top: -500px;
+        transform: rotate(100deg);
+        top: -700px;
     }
 }
 

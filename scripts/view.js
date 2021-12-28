@@ -89,9 +89,8 @@ const view = {
             {
                 $(`#${i}`).css("margin-left", 2400 * count);
                 if (anim != undefined) {
-                    $(`#${set.index - 1}`).addClass("toLeft")
-                    await timeout(250);
-                    $(`#${set.index - 1}`).removeClass("toLeft");
+                    $(`#${set.index - 1}`).addClass("toLeft");
+                    setTimeout(() => $(`#${set.index - 1}`).removeClass("toLeft"), 500);
                 }
                 count++;
             }
@@ -101,9 +100,8 @@ const view = {
             {
                 $(`#${i}`).css("margin-left", 2400 * count);
                 if (anim != undefined) {
-                    $(`#${set.index + 1}`).addClass("toRight")
-                    await timeout(250);
-                    $(`#${set.index + 1}`).removeClass("toRight");
+                    $(`#${set.index + 1}`).addClass("toRight");
+                    setTimeout(() => $(`#${set.index + 1}`).removeClass("toRight"), 500);
                 }
                 count--;
             }
