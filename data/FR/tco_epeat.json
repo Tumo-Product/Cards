@@ -1,0 +1,14 @@
+{
+    "data": [
+        {
+            "text": "TCO Certified est une certification donnée aux ordinateurs dont les impacts environnementaux ont été réduits tout au long de leur cycle de vie. Le TCO prend en compte des éléments tels que l’efficacité énergétique pendant l’utilisation du produit, l’utilisation de matériaux recyclés et la réparabilité de l’ordinateur. Tu peux généralement savoir si un produit est certifié TCO via une recherche rapide sur Internet.",
+            "title":"TCO Certified"
+        },
+        {
+            "text": "Semblable à un label certifié TCO, EPEAT a pris en compte les impacts du cycle de vie des appareils électroniques. Contrairement au TCO, ils offrent trois niveaux de certification avec des normes différentes. Les labels or, argent ou bronze ont des exigences différentes et ils permettent à une entreprise ou à un produit de continuer à améliorer l’impact environnemental des appareils. Comme TCO Certified, ces labels peuvent être apposés sur les ordinateurs, les smartphones, les tablettes, etc.",
+            "title":"EPEAT"
+        }
+    ],
+    "readmore": "Lire plus",
+    "style": "style"
+}
