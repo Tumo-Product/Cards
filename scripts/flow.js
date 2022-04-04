@@ -25,19 +25,18 @@ async function onLoad() {
 }
 
 $(async () => {
-    let path = parser.getParams();
-    await $.get(path, async function (json) {
-        anim = json.anim;
-        set.data = json.data;
-        set.readMore = json.readmore;
-        let style =  document.getElementById("style");
-        style.onload = onLoad;
-        style.href = `styles/${json.style}.css`;
-        if (json.anim != undefined) {
-            let styleAnim =  document.getElementById("styleAnim");
-            styleAnim.href = `styles/${json.anim}.css`;
-        }
-    });
+    let json = await network.getSet();
+    
+    anim = json.anim;
+    set.data = json.data;
+    set.readMore = json.readmore;
+    let style =  document.getElementById("style");
+    style.onload = onLoad;
+    style.href = `styles/${json.style}.css`;
+    if (json.anim != undefined) {
+        let styleAnim =  document.getElementById("styleAnim");
+        styleAnim.href = `styles/${json.anim}.css`;
+    }
 });
 
 const scrollCards = (direction) => {
